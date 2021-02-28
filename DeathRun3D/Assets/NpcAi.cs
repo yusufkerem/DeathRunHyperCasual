@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class NpcAi : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public float movementSpeed;
     public bool collisionStatus;
     public Animator anim;
 
-    // Update is called once per frame
     private void Start()
     {
         movementSpeed = Random.Range(1f, 2.2f);
     }
     void Update()
     {
-        Movement(collisionStatus);
+        //Movement(collisionStatus);
     }
 
-    void Movement(bool collisionStatus)
+    public void Movement(bool collisionStatus)
     {
         if (!collisionStatus)
         {
