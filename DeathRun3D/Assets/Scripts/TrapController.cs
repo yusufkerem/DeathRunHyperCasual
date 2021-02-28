@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Animator pillarAnim;
     public Animator spikeAnim;
     public Animator spinnerAnim;
@@ -15,7 +14,6 @@ public class TrapController : MonoBehaviour
     public List<GameObject> trapList = new List<GameObject>();
 
 
-    // Update is called once per frame
     void Update()
     {
         TrapTrigger();
