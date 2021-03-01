@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     
     void LateUpdate()
     {
-        
+
         target = FindObjectOfType<NpcGroupMovement>().firstPlaceNpc.transform;
         if (target.gameObject.GetComponent<NpcAi>().finished)
         {

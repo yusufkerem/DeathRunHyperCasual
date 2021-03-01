@@ -36,7 +36,10 @@ public class NpcGroupMovement : MonoBehaviour
     {
         foreach (GameObject npc in npcList)
         {
-            npcDist.Add(npc.gameObject.GetComponent<NpcAi>().distanceToFinish);
+            if (npc!=null)
+            {
+                npcDist.Add(npc.gameObject.GetComponent<NpcAi>().distanceToFinish);
+            }
         }
         float firstDistance = npcDist.Min();
         firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];

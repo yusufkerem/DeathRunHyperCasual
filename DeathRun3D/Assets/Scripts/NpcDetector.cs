@@ -13,7 +13,7 @@ public class NpcDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Npc"))
         {
-            Debug.Log("Tetiklendi");
+            //Debug.Log("Tetiklendi");
             collision.gameObject.GetComponent<NpcAi>().DoDeath();
         }
     }

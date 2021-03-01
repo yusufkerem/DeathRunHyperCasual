@@ -6,6 +6,8 @@ TagManager:
   tags:
   - obstacle
   - Npc
+  - Trap
+  - TrapPiller
   layers:
   - Default
   - TransparentFX

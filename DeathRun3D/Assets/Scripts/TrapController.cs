@@ -14,22 +14,22 @@ public class TrapController : MonoBehaviour
     public List<GameObject> trapList = new List<GameObject>();
 
 
-    void Update()
-    {
-        TrapTrigger();
-    }
+    //void Update()
+    //{
+    //    TrapTrigger();
+    //}
 
-    void TrapTrigger()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PillarTrap();
-            SpikeTrap();
-            SpinnerTrap();
-        }
-    }
+    //void TrapTrigger()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        PillarTrap();
+    //        SpikeTrap();
+    //        SpinnerTrap();
+    //    }
+    //}
 
-    void PillarTrap()
+    public void PillarTrap()
     {
         
         if (useCount!=0)
@@ -50,12 +50,12 @@ public class TrapController : MonoBehaviour
         
     }
 
-    void SpikeTrap()
+   public void SpikeTrap()
     {
         spikeAnim.SetTrigger("isTriggered");
     }
 
-    void SpinnerTrap()
+    public void SpinnerTrap()
     {
         spinnerAnim.SetTrigger("isTriggered");
     }

@@ -11,7 +11,7 @@ public class NpcAi : MonoBehaviour
     public GameObject Blood;
     Color[] colors = new Color[9];
     Color color;
-
+    public AudioClip[] Audios;
     public bool alreadyRagdoll = false;
     public bool finished;
 
@@ -44,6 +44,7 @@ public class NpcAi : MonoBehaviour
     }
     public void DoRagdoll()
     {
+        AudioSource.PlayClipAtPoint(Audios[0], transform.position);
         gameObject.GetComponent<NpcAi>().enabled = false;
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
@@ -51,6 +52,7 @@ public class NpcAi : MonoBehaviour
     }
     public void DoDeath()
     {
+        AudioSource.PlayClipAtPoint(Audios[1], transform.position);
         GameObject NewPar = Instantiate(Blood, transform.position, transform.rotation);
         NewPar.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.color;
         Destroy(NewPar, 2f);
