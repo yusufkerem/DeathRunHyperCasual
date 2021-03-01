@@ -11,6 +11,11 @@ public class NpcAi : MonoBehaviour
     public GameObject Blood;
     Color[] colors = new Color[9];
     Color color;
+
+    public bool alreadyRagdoll = false;
+    public bool finished;
+
+    public float distanceToFinish;
     
     private void Start()
     {
@@ -27,7 +32,7 @@ public class NpcAi : MonoBehaviour
 
     public void Movement(bool collisionStatus)
     {
-        if (!collisionStatus)
+        if (!collisionStatus && !finished)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
             anim.SetBool("Run", true);
@@ -42,6 +47,7 @@ public class NpcAi : MonoBehaviour
         gameObject.GetComponent<NpcAi>().enabled = false;
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+        alreadyRagdoll = true;
     }
     public void DoDeath()
     {
@@ -74,6 +80,11 @@ public class NpcAi : MonoBehaviour
             yield return null;
         }
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void FindDistance()
+    {
+        distanceToFinish = Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Finish").gameObject.transform.position);
     }
     
 }

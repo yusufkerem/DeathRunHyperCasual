@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class NpcDetRagdoll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Npc"))
         {
-            Debug.Log("Tetiklendi");
-            collision.gameObject.GetComponent<NpcAi>().DoRagdoll();
+            if (!collision.gameObject.GetComponent<NpcAi>().alreadyRagdoll)
+            {
+                Debug.Log("Tetiklendi");
+                collision.gameObject.GetComponent<NpcAi>().DoRagdoll();
+                collision.gameObject.transform.SetParent(null);
+
+                FindObjectOfType<GameManager>().killCount++;
+            }      
         }
     }
 }
