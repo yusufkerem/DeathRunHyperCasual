@@ -49,6 +49,7 @@ public class NpcAi : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
         alreadyRagdoll = true;
+        FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
     }
     public void DoDeath()
     {
@@ -56,6 +57,7 @@ public class NpcAi : MonoBehaviour
         GameObject NewPar = Instantiate(Blood, transform.position, transform.rotation);
         NewPar.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.color;
         Destroy(NewPar, 2f);
+        FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
         Destroy(gameObject);
     }
     Color ColorSelect()

@@ -38,11 +38,6 @@ public class TrapDetec : MonoBehaviour
                         
                         FindObjectOfType<TrapController>().PillarTrap();
                         yield return new WaitForSeconds(1f);
-                        
-
-
-
-
 
 
                         yield return null;

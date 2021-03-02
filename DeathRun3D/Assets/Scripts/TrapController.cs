@@ -7,6 +7,7 @@ public class TrapController : MonoBehaviour
     public Animator pillarAnim;
     public Animator spikeAnim;
     public Animator spinnerAnim;
+    public Animator barrelAnim;
 
     public GameObject pillarTrap;
     private int useCount = 2;
@@ -14,20 +15,21 @@ public class TrapController : MonoBehaviour
     public List<GameObject> trapList = new List<GameObject>();
 
 
-    //void Update()
-    //{
-    //    TrapTrigger();
-    //}
+    void Update()
+    {
+        TrapTrigger();
+    }
 
-    //void TrapTrigger()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        PillarTrap();
-    //        SpikeTrap();
-    //        SpinnerTrap();
-    //    }
-    //}
+    void TrapTrigger()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            PillarTrap();
+            SpikeTrap();
+            SpinnerTrap();
+            BarrelTrap();
+        }
+    }
 
     public void PillarTrap()
     {
@@ -50,7 +52,7 @@ public class TrapController : MonoBehaviour
         
     }
 
-   public void SpikeTrap()
+    public void SpikeTrap()
     {
         spikeAnim.SetTrigger("isTriggered");
     }
@@ -58,5 +60,11 @@ public class TrapController : MonoBehaviour
     public void SpinnerTrap()
     {
         spinnerAnim.SetTrigger("isTriggered");
+    }
+
+    public void BarrelTrap()
+    {
+        barrelAnim.SetTrigger("isTriggered");
+        barrelAnim.gameObject.transform.parent.Find("varil").GetComponent<Rigidbody>().AddForce(Vector3.right * 300, ForceMode.Impulse);
     }
 }
