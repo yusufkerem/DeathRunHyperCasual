@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public int killCount;
+    public GameObject winUi;
+    public GameObject failUi;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         WinControl();
@@ -19,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     void WinControl()
     {
-        if (killCount == FindObjectOfType<NpcGroupMovement>().npcList.Count)
+        if (killCount >= 6)
         {
             LevelCompleted();
         }
@@ -28,12 +31,17 @@ public class GameManager : MonoBehaviour
     void LevelCompleted()
     {
         Debug.Log("YOU WON");
+        winUi.SetActive(true);
+
+        winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime;   
+        
     }
 
     public void LevelFailed()
     {
         // Level Failed, Npc Dances
         Debug.Log("GAME OVER");
+        failUi.SetActive(true);
 
     }
 }

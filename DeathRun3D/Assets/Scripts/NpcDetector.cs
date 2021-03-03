@@ -15,6 +15,7 @@ public class NpcDetector : MonoBehaviour
         {
             //Debug.Log("Tetiklendi");
             collision.gameObject.GetComponent<NpcAi>().DoDeath();
+            FindObjectOfType<GameManager>().killCount++;
         }
     }
     
