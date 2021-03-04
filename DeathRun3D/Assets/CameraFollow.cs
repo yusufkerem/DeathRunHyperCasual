@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour
         target = FindObjectOfType<NpcGroupMovement>().firstPlaceNpc.transform;
         if (target.gameObject.GetComponent<NpcAi>().finished)
         {
-            Vector3 desiredFinishPosition =  new Vector3(-1.83f, 2.41f, 28.72f);
+            Vector3 desiredFinishPosition =  new Vector3(-1.72f, 2.41f, 30.9f);
             Vector3 smoothedFinishPosition = Vector3.Lerp(transform.position, desiredFinishPosition, smoothSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(transform.rotation.x, -180, transform.rotation.z);
             transform.position = smoothedFinishPosition;
