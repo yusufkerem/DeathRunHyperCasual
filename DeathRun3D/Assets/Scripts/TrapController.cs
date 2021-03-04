@@ -8,6 +8,7 @@ public class TrapController : MonoBehaviour
     public Animator spikeAnim;
     public Animator spinnerAnim;
     public Animator barrelAnim;
+    public GameObject boxTrap;
 
     public GameObject pillarTrap;
     private int useCount = 2;
@@ -28,6 +29,7 @@ public class TrapController : MonoBehaviour
             SpikeTrap();
             SpinnerTrap();
             BarrelTrap();
+            StartCoroutine("BoxTrapp");
         }
     }
 
@@ -66,5 +68,16 @@ public class TrapController : MonoBehaviour
     {
         barrelAnim.SetTrigger("isTriggered");
         barrelAnim.gameObject.transform.parent.Find("varil").GetComponent<Rigidbody>().AddForce(Vector3.right * 300, ForceMode.Impulse);
+    }
+
+    public void BoxTrap()
+    {
+        LeanTween.moveX(boxTrap, -1f, 0.2f);
+    }
+    public IEnumerator BoxTrapp()
+    {
+        LeanTween.moveX(boxTrap, -1f, 0.2f);
+        yield return new WaitForSeconds(1f);
+        LeanTween.moveX(boxTrap, -3f, 0.2f);
     }
 }
