@@ -41,8 +41,12 @@ public class NpcGroupMovement : MonoBehaviour
                 npcDist.Add(npc.gameObject.GetComponent<NpcAi>().distanceToFinish);
             }
         }
-        float firstDistance = npcDist.Min();
-        firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
-        npcDist.Clear();
+        if (npcDist!=null)
+        {
+            float firstDistance = npcDist.Min();
+            firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
+            npcDist.Clear();
+        }
+        
     }
 }
