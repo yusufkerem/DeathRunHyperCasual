@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("YOU WON");
         winUi.SetActive(true);
-
+        Camera.main.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime;   
         
     }

@@ -8,14 +8,21 @@ public class NpcGroupMovement : MonoBehaviour
 {
     public List<GameObject> npcList = new List<GameObject>();
     public List<float> npcDist = new List<float>();
+    public List<GameObject> Traps = new List<GameObject>();
     public GameObject firstPlaceNpc;
+    GameObject Ref;
     private void Awake()
     {
         foreach (Transform npc in gameObject.transform)
         {
             npcList.Add(npc.gameObject);
         }
+        foreach (var item in GameObject.FindGameObjectsWithTag("Trap"))
+        {
+            Traps.Add(item);
+        }
     }
+    
     void Update()
     {
         //Npcs movements
@@ -28,8 +35,9 @@ public class NpcGroupMovement : MonoBehaviour
         {
             npc.gameObject.GetComponent<NpcAi>().FindDistance();
         }
-
+        
         FindFirstPlaceNpc();
+        TrapSelector();
     }
 
     void FindFirstPlaceNpc()
@@ -41,8 +49,42 @@ public class NpcGroupMovement : MonoBehaviour
                 npcDist.Add(npc.gameObject.GetComponent<NpcAi>().distanceToFinish);
             }
         }
-        float firstDistance = npcDist.Min();
-        firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
-        npcDist.Clear();
+        if (npcDist!=null)
+        {
+            float firstDistance = npcDist.Min();
+            firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
+            npcDist.Clear();
+        }
+        
+    }
+    public GameObject TrapSelector()
+    {
+        
+        float ekb = Vector3.Distance(firstPlaceNpc.transform.forward, Traps[0].transform.position);
+        
+        for (int i = 0; i < Traps.Count; i++)
+        {
+            
+            if (Vector3.Distance(firstPlaceNpc.transform.position, Traps[i].transform.position)<ekb)
+            {
+                
+                ekb = Vector3.Distance(firstPlaceNpc.transform.position, Traps[i].transform.position);
+                Ref = Traps[i].gameObject;
+                Debug.Log(ekb);
+                //if (Vector3.Distance(firstPlaceNpc.transform.position, Traps[i].transform.position) <= 3.6f)
+                //{
+                //    Traps.Remove(Traps[i]);
+
+                //}
+                
+                
+            }
+
+
+        }
+        Debug.Log(Ref.name);
+        return Ref;
+
+
     }
 }
