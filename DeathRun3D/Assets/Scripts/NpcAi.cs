@@ -20,7 +20,7 @@ public class NpcAi : MonoBehaviour
     
     private void Start()
     {
-        movementSpeed = Random.Range(1.3f, 2.4f);
+        movementSpeed = Random.Range(2.3f, 3.5f);
         movementTemp = movementSpeed;
         color = ColorSelect();
         gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material.color = color;

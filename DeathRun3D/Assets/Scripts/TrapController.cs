@@ -89,13 +89,12 @@ public class TrapController : MonoBehaviour
 
     public void BarrelTrap()
     {
-        foreach (var item in GameObject.Find("BarrellTrapGenel").GetComponentsInChildren<Animator>())
-        {
-            item.SetTrigger("isTriggered");
-        }
+        GameObject.Find("BarrellTrapGenel").transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+        GameObject.Find("BarrellTrapGenel").transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+
         foreach (var item in GameObject.Find("BarrellTrapGenel").GetComponentsInChildren<Rigidbody>())
         {
-            item.AddForce(Vector3.right * 300, ForceMode.Impulse);
+            item.AddForce(Vector3.right * 350, ForceMode.Impulse);
         }
         //barrelAnim.SetTrigger("isTriggered");
         //barrelAnim.gameObject.transform.parent.Find("varil").GetComponent<Rigidbody>().AddForce(Vector3.right * 300, ForceMode.Impulse);
