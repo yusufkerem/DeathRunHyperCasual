@@ -13,7 +13,7 @@ public class NpcDetRagdoll : MonoBehaviour
                 Debug.Log("Tetiklendi");
                 collision.gameObject.GetComponent<NpcAi>().DoRagdoll();
                 collision.gameObject.transform.SetParent(null);
-
+                
                 FindObjectOfType<GameManager>().killCount++;
             }      
         }

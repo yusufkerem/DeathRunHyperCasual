@@ -56,21 +56,35 @@ public class NpcAi : MonoBehaviour
     }
     public void DoRagdoll()
     {
+        int index = FindObjectOfType<NpcGroupMovement>().npcList.IndexOf(gameObject);
         AudioSource.PlayClipAtPoint(Audios[0], transform.position);
         gameObject.GetComponent<NpcAi>().enabled = false;
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
         alreadyRagdoll = true;
+        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
+        Destroy(gameObject, 2f);
+        
+        
+        
     }
     public void DoDeath()
     {
+        int index = FindObjectOfType<NpcGroupMovement>().npcList.IndexOf(gameObject);
+        Debug.Log(index);
         AudioSource.PlayClipAtPoint(Audios[1], transform.position);
         GameObject NewPar = Instantiate(Blood, transform.position, transform.rotation);
         NewPar.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.color;
         Destroy(NewPar, 2f);
+        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
+        
         Destroy(gameObject);
+        
+        
     }
     Color ColorSelect()
     {

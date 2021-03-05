@@ -5513,6 +5513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2908451116351511662, guid: 00345cd378452b945bc7089898499499,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908451116351511662, guid: 00345cd378452b945bc7089898499499,
+        type: 3}
       propertyPath: m_TagString
       value: Trap
       objectReference: {fileID: 0}
@@ -5643,7 +5648,12 @@ PrefabInstance:
     - target: {fileID: 3239484456982313222, guid: cd9a5268e4e503747acf0e8b7661739e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239484456982313222, guid: cd9a5268e4e503747acf0e8b7661739e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9a5268e4e503747acf0e8b7661739e, type: 3}
@@ -5963,7 +5973,12 @@ PrefabInstance:
     - target: {fileID: 6223866801739140044, guid: b37ba670be2013a4f8c787f6710eafa6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223866801739140044, guid: b37ba670be2013a4f8c787f6710eafa6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     - target: {fileID: 6223866801739140045, guid: b37ba670be2013a4f8c787f6710eafa6,
         type: 3}

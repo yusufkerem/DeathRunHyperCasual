@@ -9,10 +9,10 @@ public class TrapController : MonoBehaviour
     public Animator spinnerAnim;
     public Animator barrelAnim;
     public GameObject boxTrap;
-
+    bool BoxControl = false;
     public GameObject pillarTrap;
     private int useCount = 2;
-
+    Coroutine Ref;
     public List<GameObject> trapList = new List<GameObject>();
 
 
@@ -39,10 +39,19 @@ public class TrapController : MonoBehaviour
                 SpinnerTrap();
                 
             }
+            else if (FindObjectOfType<NpcGroupMovement>().TrapSelector().name == "BoxTrap")
+            {
+                Ref=StartCoroutine("BoxTrapp");
+                
+            }
+            else if (FindObjectOfType<NpcGroupMovement>().TrapSelector().name == "SpikeBall")
+            {
+                SpikeTrap();
+            }
 
-            //SpikeTrap();
+            
 
-            StartCoroutine("BoxTrapp");
+            
         }
     }
 
@@ -98,11 +107,16 @@ public class TrapController : MonoBehaviour
     public void BoxTrap()
     {
         LeanTween.moveX(boxTrap, -1f, 0.2f);
+        
     }
     public IEnumerator BoxTrapp()
     {
-        LeanTween.moveX(boxTrap, -1f, 0.2f);
-        yield return new WaitForSeconds(1f);
-        LeanTween.moveX(boxTrap, -3f, 0.2f);
+        if (!BoxControl)
+        {
+            LeanTween.moveX(boxTrap, -1f, 0.2f);
+            yield return new WaitForSeconds(1f);
+            LeanTween.moveX(boxTrap, -3f, 0.2f);
+        }
+        BoxControl = true;
     }
 }
