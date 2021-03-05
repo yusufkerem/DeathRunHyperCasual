@@ -23,7 +23,7 @@ public class TrapController : MonoBehaviour
 
     void TrapTrigger()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && FindObjectOfType<GameManager>().start)
         {
             //
             if (FindObjectOfType<NpcGroupMovement>().TrapSelector().name== "PillarTrapParent")

@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
     public int killCount;
     public GameObject winUi;
     public GameObject failUi;
-    void Start()
-    {
-        
-    }
-
+    public bool start = false;
+    public GameObject mainMenu;
+    public GameObject bar;
+    public int lvlIndex = 1;
+    public GameObject lvl1;
+    public GameObject lvl2;
     
     void Update()
     {
@@ -32,9 +33,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("YOU WON");
         winUi.SetActive(true);
-        Camera.main.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime;   
-        
+        //Camera.main.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime; 
+
     }
 
     public void LevelFailed()
@@ -44,4 +45,14 @@ public class GameManager : MonoBehaviour
         failUi.SetActive(true);
 
     }
+
+    public void StartLevel()
+    {
+        start = true;
+        mainMenu.SetActive(false);
+        bar.SetActive(true);
+        
+    }
+
+    
 }

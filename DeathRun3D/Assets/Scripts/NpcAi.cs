@@ -14,25 +14,37 @@ public class NpcAi : MonoBehaviour
     public AudioClip[] Audios;
     public bool alreadyRagdoll = false;
     public bool finished;
+    public float movementTemp;
 
     public float distanceToFinish;
     
     private void Start()
     {
-        movementSpeed = Random.Range(1f, 2.2f);
+        movementSpeed = Random.Range(1.3f, 2.4f);
+        movementTemp = movementSpeed;
         color = ColorSelect();
         gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material.color = color;
         StartCoroutine(StStatus());
+        //movementSpeed = 0f;
         
     }
     void Update()
     {
+        if (!FindObjectOfType<GameManager>().start)
+        {
+            movementSpeed = 0;
+            anim.SetBool("Run", false);
+        }
+        else
+        {
+            movementSpeed = movementTemp;
+        }
         //Movement(collisionStatus);
     }
 
     public void Movement(bool collisionStatus)
     {
-        if (!collisionStatus && !finished)
+        if (!collisionStatus && !finished && FindObjectOfType<GameManager>().start)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
             anim.SetBool("Run", true);
