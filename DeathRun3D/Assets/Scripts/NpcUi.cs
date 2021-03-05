@@ -27,14 +27,22 @@ public class NpcUi : MonoBehaviour
 
     void UpdateIconPositions()
     {
-        foreach (GameObject icon in npcIconList)
-        {
+        //foreach (GameObject icon in npcIconList)
+        //{
 
-        }
+        //}
 
         for (int i = 0; i < npcIconList.Count; i++)
         {
-            npcIconList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(FindObjectOfType<NpcGroupMovement>().npcList[i].transform.position.z * 12.2f * 1.5f - 150, npcIconList[i].GetComponent<RectTransform>().anchoredPosition.y);
+            //if (FindObjectOfType<NpcGroupMovement>().npcList[i] == null)
+            //{
+            //    Destroy(FindObjectOfType<NpcGroupMovement>().npcList[i]);
+            //}
+            if (npcIconList[i]!=null)
+            {
+                npcIconList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(FindObjectOfType<NpcGroupMovement>().npcList[i].transform.position.z * 12.2f * 1.5f - 150, npcIconList[i].GetComponent<RectTransform>().anchoredPosition.y);
+            }
+            
         }
     }
 }

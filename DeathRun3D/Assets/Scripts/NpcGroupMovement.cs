@@ -70,7 +70,7 @@ public class NpcGroupMovement : MonoBehaviour
                 
                 ekb = Vector3.Distance(firstPlaceNpc.transform.position, Traps[i].transform.position);
                 Ref = Traps[i].gameObject;
-                Debug.Log(ekb);
+                //Debug.Log(ekb);
                 //if (Vector3.Distance(firstPlaceNpc.transform.position, Traps[i].transform.position) <= 3.6f)
                 //{
                 //    Traps.Remove(Traps[i]);
@@ -82,7 +82,7 @@ public class NpcGroupMovement : MonoBehaviour
 
 
         }
-        Debug.Log(Ref.name);
+        //Debug.Log(Ref.name);
         return Ref;
 
 
