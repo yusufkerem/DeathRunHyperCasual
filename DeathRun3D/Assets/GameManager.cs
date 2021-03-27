@@ -15,7 +15,11 @@ public class GameManager : MonoBehaviour
     public int lvlIndex = 1;
     public GameObject lvl1;
     public GameObject lvl2;
-    
+    int ComplateCount;
+    private void Awake()
+    {
+        ComplateCount = NpcGroupMovement.Instance.npcList.Count;
+    }
     void Update()
     {
         WinControl();
@@ -23,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void WinControl()
     {
-        if (killCount >= 6)
+        if (killCount >=ComplateCount)
         {
             LevelCompleted();
         }

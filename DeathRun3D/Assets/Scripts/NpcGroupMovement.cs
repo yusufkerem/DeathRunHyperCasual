@@ -10,9 +10,19 @@ public class NpcGroupMovement : MonoBehaviour
     public List<float> npcDist = new List<float>();
     public List<GameObject> Traps = new List<GameObject>();
     public GameObject firstPlaceNpc;
+    public static NpcGroupMovement Instance { get; private set; }
     GameObject Ref;
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(Instance);
+        }
         foreach (Transform npc in gameObject.transform)
         {
             npcList.Add(npc.gameObject);
@@ -26,18 +36,18 @@ public class NpcGroupMovement : MonoBehaviour
     void Update()
     {
         //Npcs movements
-        foreach (Transform npc in gameObject.transform)
+
+        try
         {
-            npc.gameObject.GetComponent<NpcAi>().Movement(npc.gameObject.GetComponent<NpcAi>().collisionStatus);
+            NpcMove();
+            FindFirstPlaceNpc();
+            TrapSelector();
         }
-        //Npc distance to finish calculation
-        foreach (Transform npc in gameObject.transform)
+        catch 
         {
-            npc.gameObject.GetComponent<NpcAi>().FindDistance();
+
+            
         }
-        
-        FindFirstPlaceNpc();
-        TrapSelector();
     }
 
     void FindFirstPlaceNpc()
@@ -51,9 +61,17 @@ public class NpcGroupMovement : MonoBehaviour
         }
         if (npcDist!=null)
         {
-            float firstDistance = npcDist.Min();
-            firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
-            npcDist.Clear();
+            try
+            {
+                float firstDistance = npcDist.Min();
+                firstPlaceNpc = npcList[npcDist.IndexOf(firstDistance)];
+                npcDist.Clear();
+            }
+            catch 
+            {
+
+                
+            }
         }
         
     }
@@ -86,5 +104,17 @@ public class NpcGroupMovement : MonoBehaviour
         return Ref;
 
 
+    }
+    void NpcMove()
+    {
+        foreach (Transform npc in gameObject.transform)
+        {
+            npc.gameObject.GetComponent<NpcAi>().Movement(npc.gameObject.GetComponent<NpcAi>().collisionStatus);
+        }
+        //Npc distance to finish calculation
+        foreach (Transform npc in gameObject.transform)
+        {
+            npc.gameObject.GetComponent<NpcAi>().FindDistance();
+        }
     }
 }

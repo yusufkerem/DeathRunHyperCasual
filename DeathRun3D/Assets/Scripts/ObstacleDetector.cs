@@ -9,11 +9,16 @@ public class ObstacleDetector : MonoBehaviour
     {
         npc = gameObject.transform.parent.gameObject.GetComponent<NpcAi>();
     }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag=="obstacle")
+        if (other.gameObject.tag == "obstacle")
         {
             npc.collisionStatus = true;
+        }
+        else
+        {
+            npc.collisionStatus = false;
         }
     }
     private void OnTriggerExit(Collider other)

@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: Northern Soul Spin Combo
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PolySphere.003
+    second: {fileID: 2100000, guid: 18149703356e4f24682d605890b04623, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
