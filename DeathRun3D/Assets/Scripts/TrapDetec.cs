@@ -13,10 +13,7 @@ public class TrapDetec : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //Traps();
-    }
+    
     IEnumerator Traps()
     {
 
@@ -52,6 +49,11 @@ public class TrapDetec : MonoBehaviour
                     if (touchedObject.collider.gameObject.name == "DikenliGulle360" || touchedObject.collider.gameObject.name == "GullePlatform (2)")
                     {
                         FindObjectOfType<TrapController>().SpikeTrap();
+                        yield return null;
+                    }
+                    if (touchedObject.collider.gameObject.name == "PyroTrap")
+                    {
+                        FindObjectOfType<TrapController>().PyroTrap();
                         yield return null;
                     }
                     yield return null;

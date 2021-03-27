@@ -10,11 +10,14 @@ public class NpcAi : MonoBehaviour
     public Animator anim;
     public GameObject Blood;
     Color[] colors = new Color[9];
+    public Material[] materials = new Material[6];
     Color color;
     public AudioClip[] Audios;
     public bool alreadyRagdoll = false;
     public bool finished;
     public float movementTemp;
+
+    public GameObject burnParticle;
 
     public float distanceToFinish;
     
@@ -22,8 +25,9 @@ public class NpcAi : MonoBehaviour
     {
         movementSpeed = Random.Range(2.3f, 3.5f);
         movementTemp = movementSpeed;
-        color = ColorSelect();
-        gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material.color = color;
+        
+        //color = ColorSelect();
+        gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material = materials[Random.Range(0,5)];
         StartCoroutine(StStatus());
         //movementSpeed = 0f;
         
@@ -86,22 +90,7 @@ public class NpcAi : MonoBehaviour
         
         
     }
-    Color ColorSelect()
-    {
-        colors[0] = Color.red;
-        colors[1] = Color.green;
-        colors[2] = Color.blue;
-        colors[3] = Color.cyan;
-        colors[4] = Color.white;
-        colors[5] = Color.black;
-        colors[6] = Color.yellow;
-        colors[7] = Color.grey;
-        colors[8] = Color.magenta;
-        int ColorValue = Random.Range(0, colors.Length);
-
-        return colors[ColorValue];
-
-    }
+    
     IEnumerator StStatus()
     {
         foreach (var item in GetComponentsInChildren<CharacterJoint>())
@@ -116,5 +105,26 @@ public class NpcAi : MonoBehaviour
     {
         distanceToFinish = Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Finish").gameObject.transform.position);
     }
+
+    public IEnumerator Burn()
+    {
+        int index = FindObjectOfType<NpcGroupMovement>().npcList.IndexOf(gameObject);
+        AudioSource.PlayClipAtPoint(Audios[2], transform.position);
+        
+        GameObject burnPar = Instantiate(burnParticle, gameObject.transform);
+        gameObject.GetComponent<Outline>().enabled = false;
+        gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material = materials[6];
+        //burnPar.transform.position = new Vector3(0, 0, 0);
+        //gameObject.transform.Find("burnParticle").gameObject.GetComponent<ParticleSystem>().Play();
+        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
+        FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
+        yield return new WaitForSeconds(2f);
+        anim.SetTrigger("burn");
+        gameObject.transform.SetParent(null);
+        Destroy(gameObject, 5f);
+
+    }
+
     
 }
