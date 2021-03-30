@@ -30,11 +30,9 @@ public class TrapController : MonoBehaviour
             {
                 FindObjectOfType<NpcGroupMovement>().TrapSelector().gameObject.GetComponent<Traps>().Sthis();
             }
-            catch 
-            {
-
-                
-            }
+            catch { }
+            
+            
             //if (FindObjectOfType<NpcGroupMovement>().TrapSelector().name== "PillarTrapParent")
             //{
             //    PillarTrap();
