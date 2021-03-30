@@ -16,6 +16,7 @@ public class NpcAi : MonoBehaviour
     public bool alreadyRagdoll = false;
     public bool finished;
     public float movementTemp;
+    public bool enterSpring;
 
 
     public GameObject burnParticle;

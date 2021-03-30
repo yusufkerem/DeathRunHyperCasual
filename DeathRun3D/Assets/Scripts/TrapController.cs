@@ -11,8 +11,9 @@ public class TrapController : MonoBehaviour
     //public GameObject boxTrap;
     bool BoxControl = false;
     //public GameObject pillarTrap;
-   // private int useCount = 2;
-    
+    // private int useCount = 2;
+    public RaycastHit hit;
+
     public List<GameObject> trapList = new List<GameObject>();
 
 
@@ -23,16 +24,27 @@ public class TrapController : MonoBehaviour
 
     void TrapTrigger()
     {
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
         if (Input.GetMouseButtonDown(0) && FindObjectOfType<GameManager>().start)
         {
             //
-            try
+
+
+            if (Physics.Raycast(ray, out hit, 100f))
             {
-                FindObjectOfType<NpcGroupMovement>().TrapSelector().gameObject.GetComponent<Traps>().Sthis();
+                if (hit.collider.gameObject.tag == "redButton")
+                {
+                    try
+                    {
+                        FindObjectOfType<NpcGroupMovement>().TrapSelector().gameObject.GetComponent<Traps>().Sthis();
+                        FindObjectOfType<NpcGroupMovement>().TrapSelector().gameObject.GetComponentInChildren<Outline>().enabled = false;
+                        StartCoroutine("RedButton");
+                    }
+                    catch { }
+                }
             }
-            catch { }
-            
-            
             //if (FindObjectOfType<NpcGroupMovement>().TrapSelector().name== "PillarTrapParent")
             //{
             //    PillarTrap();
@@ -60,6 +72,12 @@ public class TrapController : MonoBehaviour
 
 
         }
+    }
+    public IEnumerator RedButton()
+    {
+        LeanTween.moveLocalY(hit.collider.gameObject.transform.GetChild(1).gameObject, 0.239f, 0.2f).setEaseInOutCirc();
+        yield return new WaitForSeconds(0.1f);
+        LeanTween.moveLocalY(hit.collider.gameObject.transform.GetChild(1).gameObject, 0.282f, 0.2f).setEaseInOutCirc();
     }
 
     //public void PillarTrap()

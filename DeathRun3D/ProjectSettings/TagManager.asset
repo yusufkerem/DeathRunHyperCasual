@@ -8,6 +8,7 @@ TagManager:
   - Npc
   - Trap
   - TrapPiller
+  - redButton
   layers:
   - Default
   - TransparentFX

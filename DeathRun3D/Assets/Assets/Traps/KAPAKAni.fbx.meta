@@ -1,8 +1,32 @@
 fileFormatVersion: 2
-guid: 4dfac4519e71df64babb511c173b6e9e
+guid: fde59dab26022d64f95adab0d3cba091
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -6734048118158861003
+    second: kapak1|Cube.001Action
+  - first:
+      74: 4854966683063101840
+    second: kapak1|Cube.002Action
+  - first:
+      74: 2948810036623436553
+    second: kapak1|kapak1animasyon
+  - first:
+      74: -5432669563679188743
+    second: kapak1|kapak2animasyon
+  - first:
+      74: 2502288303742125638
+    second: kapak2|Cube.001Action
+  - first:
+      74: 149896132981595273
+    second: kapak2|Cube.002Action
+  - first:
+      74: -4998881805172370560
+    second: kapak2|kapak1animasyon
+  - first:
+      74: 3570323769934586672
+    second: kapak2|kapak2animasyon
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -31,7 +55,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -90,7 +114,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
