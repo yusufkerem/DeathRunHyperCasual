@@ -91,6 +91,32 @@ public class SpringTrap : Traps
         //gameObject.GetComponentInChildren<BoxCollider>().enabled = false;
     }
 }
+
+public class PyroTrap : Traps
+{
+    bool pyroControl = false;
+    public IEnumerator pyroTrap()
+    {
+        
+        if (!pyroControl)
+        {
+            gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
+            gameObject.transform.GetChild(3).GetComponent<ParticleSystem>().Play();
+            AudioSource.PlayClipAtPoint(FindObjectOfType<AudioController>().Audios[0], transform.position);
+            yield return new WaitForSeconds(0.2f);
+            gameObject.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+            gameObject.transform.GetChild(3).GetComponent<ParticleSystem>().Stop();
+            pyroControl = true;
+            //gameObject.GetComponent<Outline>().enabled = false;
+        }
+    }
+    public override void Sthis()
+    {
+        
+        StartCoroutine(pyroTrap());
+
+    }
+}
 public class PiilerTrap : Traps
 {
     public override void Sthis()

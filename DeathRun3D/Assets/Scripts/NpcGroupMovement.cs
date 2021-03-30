@@ -36,18 +36,18 @@ public class NpcGroupMovement : MonoBehaviour
     void Update()
     {
         //Npcs movements
-
-        try
-        {
-            NpcMove();
-            FindFirstPlaceNpc();
-            TrapSelector();
-        }
-        catch 
-        {
+        NpcMove();
+        FindFirstPlaceNpc();
+        TrapSelector();
+        //try
+        //{
+            
+        //}
+        //catch 
+        //{
 
             
-        }
+        //}
     }
 
     void FindFirstPlaceNpc()
