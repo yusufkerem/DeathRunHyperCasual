@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Metallic03__StylSurf_Single_ExCel_Spec_Rim
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
-  m_ShaderKeywords: DR_CEL_EXTRA_ON DR_RIM_ON DR_SPECULAR_ON _CELPRIMARYMODE_SINGLE
-    _FLAT_SHADOWS_ENABLED _FLAT_SPECULAR_ENABLED _UNITYSHADOWMODE_NONE
+  m_ShaderKeywords: DR_CEL_EXTRA_ON DR_RIM_ON _CELPRIMARYMODE_SINGLE _FLAT_SHADOWS_ENABLED
+    _FLAT_SPECULAR_ENABLED _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -76,8 +76,8 @@ Material:
     - _FlatRimAmount: 0.5
     - _FlatRimEdgeSmoothness: 1
     - _FlatRimEnabled: 1
-    - _FlatRimLightAlign: 0.424
-    - _FlatRimSize: 0.42
+    - _FlatRimLightAlign: 0.127
+    - _FlatRimSize: 0.943
     - _FlatShadowsEnabled: 1
     - _FlatSmoothness: 0.362
     - _FlatSpecularEdgeSmoothness: 1
@@ -114,14 +114,16 @@ Material:
     - _ShadowEdgeSmoothness: 0.071
     - _ShadowFalloff: 0.01
     - _SmoothnessTextureChannel: 0
-    - _SpecularEnabled: 1
+    - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TextureBlendingMode: 0
     - _TextureImpact: 1
     - _UVSec: 0
     - _UnityShadowMode: 0
     - _UnityShadowPower: 0
     - _UnityShadowSharpness: 1
+    - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}

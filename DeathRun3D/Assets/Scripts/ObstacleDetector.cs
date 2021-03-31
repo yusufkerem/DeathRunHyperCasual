@@ -16,11 +16,18 @@ public class ObstacleDetector : MonoBehaviour
         {
             npc.collisionStatus = true;
         }
-        else
-        {
-            npc.collisionStatus = false;
-        }
+        //else
+        //{
+        //    npc.collisionStatus = false;
+        //}
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "obstacle")
+    //    {
+    //        npc.collisionStatus = true;
+    //    }
+    //}
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "obstacle")

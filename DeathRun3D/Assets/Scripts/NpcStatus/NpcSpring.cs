@@ -11,7 +11,7 @@ public class NpcSpring : MonoBehaviour
             if (!collision.gameObject.GetComponent<NpcAi>().alreadyRagdoll)
             {
                 Debug.Log("Tetiklendi");
-                //collision.gameObject.GetComponent<NpcAi>().SpringStatus();
+                collision.gameObject.GetComponent<NpcAi>().SpringStatus();
                 collision.gameObject.transform.SetParent(null);
 
                 FindObjectOfType<GameManager>().killCount++;

@@ -21,9 +21,13 @@ public class BarralTrap : Traps
     public override void Sthis()
     {
         
-        foreach (var item in GameObject.Find("BarrellTrapGenel").GetComponentsInChildren<Animator>())
+        foreach (var item in GameObject.Find("BarrellTrapGenel").gameObject.transform.GetComponentsInChildren<Animator>())
         {
-            item.SetTrigger("isTriggered");
+            if (item.gameObject.name == "VarilPlatfromkapak")
+            {
+                item.gameObject.SetActive(false);
+            }
+            
         }
         foreach (var item in GameObject.Find("BarrellTrapGenel").GetComponentsInChildren<Rigidbody>())
         {
@@ -39,6 +43,26 @@ public class SpinnerTrap : Traps
         Anim.SetTrigger("isTriggered");
     }
     
+}
+public class FallTrap : Traps
+{
+    public override void Sthis()
+    {
+        foreach (GameObject item in NpcGroupMovement.Instance.npcList)
+        {
+            item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            item.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+        }
+        
+        foreach (var item in gameObject.GetComponentsInChildren<Animator>())
+        {
+            item.SetTrigger("isTriggered");
+        }
+        
+        
+    }
+
 }
 public class Spike : Traps
 {
@@ -74,8 +98,11 @@ public class SpringTrap : Traps
 {
     IEnumerator SetAct()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.8f);
+        gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.transform.position = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(0.2f);
         gameObject.SetActive(false);
+        
     }
     IEnumerator ColStatus()
     {
