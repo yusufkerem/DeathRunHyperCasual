@@ -75,9 +75,9 @@ public class TrapController : MonoBehaviour
     }
     public IEnumerator RedButton()
     {
-        LeanTween.moveLocalY(hit.collider.gameObject.transform.GetChild(1).gameObject, 0.239f, 0.2f).setEaseInOutCirc();
+        LeanTween.moveLocalY(hit.collider.gameObject, -2.8f, 0.2f).setEaseInOutCirc();
         yield return new WaitForSeconds(0.1f);
-        LeanTween.moveLocalY(hit.collider.gameObject.transform.GetChild(1).gameObject, 0.282f, 0.2f).setEaseInOutCirc();
+        LeanTween.moveLocalY(hit.collider.gameObject, -2.677f, 0.2f).setEaseInOutCirc();
     }
 
     //public void PillarTrap()

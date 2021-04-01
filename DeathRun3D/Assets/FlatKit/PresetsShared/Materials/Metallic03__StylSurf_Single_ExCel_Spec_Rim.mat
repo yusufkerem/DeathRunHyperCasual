@@ -74,10 +74,10 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FlatRimAmount: 0.5
-    - _FlatRimEdgeSmoothness: 1
+    - _FlatRimEdgeSmoothness: 0.418
     - _FlatRimEnabled: 1
-    - _FlatRimLightAlign: 0.127
-    - _FlatRimSize: 0.943
+    - _FlatRimLightAlign: 0.278
+    - _FlatRimSize: 0.87
     - _FlatShadowsEnabled: 1
     - _FlatSmoothness: 0.362
     - _FlatSpecularEdgeSmoothness: 1
