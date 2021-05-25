@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using YsoCorp.GameUtils;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ComplateCount = NpcGroupMovement.Instance.npcList.Count;
+        GameStart();
     }
     void Update()
     {
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     void LevelCompleted()
     {
         Debug.Log("YOU WON");
+        GameFinish(true);
         winUi.SetActive(true);
         //Camera.main.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime; 
@@ -57,6 +61,15 @@ public class GameManager : MonoBehaviour
         bar.SetActive(true);
         
     }
+    void GameStart()
+    {
+        YCManager.instance.OnGameStarted(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
-    
+    void GameFinish(bool win)
+    {
+        YCManager.instance.OnGameFinished(win);
+    }
+
+
 }

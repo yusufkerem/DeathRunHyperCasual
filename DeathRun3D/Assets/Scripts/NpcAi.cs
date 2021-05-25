@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using YsoCorp.GameUtils;
 
 public class NpcAi : MonoBehaviour
 {
@@ -157,6 +159,14 @@ public class NpcAi : MonoBehaviour
     {
         distanceToFinish = Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Finish").gameObject.transform.position);
     }
+    void GameStart()
+    {
+        YCManager.instance.OnGameStarted(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
+    void GameFinish(bool win)
+    {
+        YCManager.instance.OnGameFinished(win);
+    }
 
 }
