@@ -26,7 +26,7 @@ public class NpcAi : MonoBehaviour
     {
         //Rg = gameObject.GetComponent<Rigidbody>();
         gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material = materials[Random.Range(0, 5)];
-        movementSpeed = Random.Range(2.3f, 3.5f);
+        movementSpeed = Random.Range(3.6f, 4.7f);
         movementTemp = movementSpeed;
         StartCoroutine(StStatus());
         //color = ColorSelect();
@@ -62,8 +62,8 @@ public class NpcAi : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().enabled = false;
         gameObject.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
         alreadyRagdoll = true;
-        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
-        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
         Destroy(gameObject, 2f);
 
@@ -84,8 +84,8 @@ public class NpcAi : MonoBehaviour
         }
 
         
-        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
-        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
         Destroy(gameObject, 2f);
 
@@ -110,8 +110,8 @@ public class NpcAi : MonoBehaviour
         GameObject NewPar = Instantiate(Blood, transform.position, transform.rotation);
         NewPar.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = gameObject.transform.GetChild(0).transform.GetChild(1).GetComponent<Renderer>().material.color;
         Destroy(NewPar, 2f);
-        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
-        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
 
         Destroy(gameObject);
@@ -128,8 +128,8 @@ public class NpcAi : MonoBehaviour
         gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material = materials[6];
         //burnPar.transform.position = new Vector3(0, 0, 0);
         //gameObject.transform.Find("burnParticle").gameObject.GetComponent<ParticleSystem>().Play();
-        Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
-        FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //Destroy(FindObjectOfType<NpcUi>().npcIconList[index]);
+        //FindObjectOfType<NpcUi>().npcIconList.Remove(FindObjectOfType<NpcUi>().npcIconList[index]);
         FindObjectOfType<NpcGroupMovement>().npcList.Remove(gameObject);
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("burn");

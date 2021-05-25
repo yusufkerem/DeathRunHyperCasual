@@ -31,9 +31,16 @@ public class uiController : MonoBehaviour
 
     public void NextLvl()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        GameObject.Find("Level1").SetActive(false);
-        Level2.SetActive(true);
-        FindObjectOfType<NpcUi>().npcİconAdd();
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        //GameObject.Find("Level1").SetActive(false);
+        //Level2.SetActive(true);
+        //FindObjectOfType<NpcUi>().npcİconAdd();
     }
 }
