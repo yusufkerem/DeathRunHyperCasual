@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using YsoCorp.GameUtils;
+
 
 public class NpcAi : MonoBehaviour
 {
@@ -26,6 +25,7 @@ public class NpcAi : MonoBehaviour
     public float distanceToFinish;
     private void Start()
     {
+        
         //Rg = gameObject.GetComponent<Rigidbody>();
         gameObject.transform.GetChild(0).gameObject.transform.GetChild(1).GetComponent<Renderer>().material = materials[Random.Range(0, 5)];
         movementSpeed = Random.Range(3.6f, 4.7f);
@@ -159,14 +159,6 @@ public class NpcAi : MonoBehaviour
     {
         distanceToFinish = Vector3.Distance(gameObject.transform.position, GameObject.FindGameObjectWithTag("Finish").gameObject.transform.position);
     }
-    void GameStart()
-    {
-        YCManager.instance.OnGameStarted(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    void GameFinish(bool win)
-    {
-        YCManager.instance.OnGameFinished(win);
-    }
+    
 
 }

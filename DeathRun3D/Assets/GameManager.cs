@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour
     public int lvlIndex = 1;
     public GameObject lvl1;
     public GameObject lvl2;
-    int ComplateCount;
+    public int ComplateCount;
     private void Awake()
     {
         ComplateCount = NpcGroupMovement.Instance.npcList.Count;
+        //GameStart();
+    }
+    private void Start()
+    {
         GameStart();
     }
     void Update()
@@ -30,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     void WinControl()
     {
-        if (killCount >=ComplateCount)
+        if (NpcGroupMovement.Instance.npcList.Count <= 0)
         {
             LevelCompleted();
         }
@@ -39,10 +43,11 @@ public class GameManager : MonoBehaviour
     void LevelCompleted()
     {
         Debug.Log("YOU WON");
-        GameFinish(true);
+        
         winUi.SetActive(true);
         //Camera.main.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime; 
+        winUi.transform.Find("bg").gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount += 1 * 0.5f * Time.deltaTime;
+        GameFinish(true);
 
     }
 

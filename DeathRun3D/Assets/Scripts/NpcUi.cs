@@ -14,7 +14,7 @@ public class NpcUi : MonoBehaviour
     
     void Update()
     {
-        UpdateIconPositions();
+        //UpdateIconPositions();
     }
     public void npcİconAdd()
     {
@@ -28,24 +28,24 @@ public class NpcUi : MonoBehaviour
             npcIconList[i].GetComponent<Image>().color = FindObjectOfType<NpcGroupMovement>().npcList[i].transform.GetChild(0).GetChild(1).gameObject.GetComponent<Renderer>().material.GetColor("_Color");  //Optimize this
         }
     }
-    void UpdateIconPositions()
-    {
-        //foreach (GameObject icon in npcIconList)
-        //{
+    //void UpdateIconPositions()
+    //{
+    //    //foreach (GameObject icon in npcIconList)
+    //    //{
 
-        //}
+    //    //}
         
-        for (int i = 0; i < npcIconList.Count; i++)
-        {
-            //if (FindObjectOfType<NpcGroupMovement>().npcList[i] == null)
-            //{
-            //    Destroy(FindObjectOfType<NpcGroupMovement>().npcList[i]);
-            //}
-            if (npcIconList[i]!=null)
-            {
-                npcIconList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(FindObjectOfType<NpcGroupMovement>().npcList[i].transform.position.z * 12.2f * 1.5f - 150, npcIconList[i].GetComponent<RectTransform>().anchoredPosition.y);
-            }
+    //    for (int i = 0; i < npcIconList.Count; i++)
+    //    {
+    //        //if (FindObjectOfType<NpcGroupMovement>().npcList[i] == null)
+    //        //{
+    //        //    Destroy(FindObjectOfType<NpcGroupMovement>().npcList[i]);
+    //        //}
+    //        if (npcIconList[i]!=null)
+    //        {
+    //            npcIconList[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(FindObjectOfType<NpcGroupMovement>().npcList[i].transform.position.z * 12.2f * 1.5f - 150, npcIconList[i].GetComponent<RectTransform>().anchoredPosition.y);
+    //        }
             
-        }
-    }
+    //    }
+    //}
 }

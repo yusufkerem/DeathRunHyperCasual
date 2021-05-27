@@ -38,15 +38,18 @@ public class NpcGroupMovement : MonoBehaviour
         //Npcs movements
         NpcMove();
         FindFirstPlaceNpc();
-        TrapSelector();
+        if (npcList.Count != 0)
+        {
+            TrapSelector();
+        }
         //try
         //{
-            
+
         //}
         //catch 
         //{
 
-            
+
         //}
     }
 
